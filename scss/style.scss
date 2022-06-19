@@ -779,11 +779,12 @@ nav{
 	display: none!important;
 	@extend %button-basic-layout;
 	padding: 20px;
+	height: 65px;
 	border: 1px solid $primary-color;
-	display: flex;
 	flex-direction: column;
 
 	span{
+		transition: $animation-delay;
 		content: '';
 		display: inline-block;
 		width: 25px;
@@ -796,7 +797,7 @@ nav{
 
 %layout__hamburger{
 	content: '';
-	display: inline-block;
+	display: flex;
 	width: 25px;
 	height: 2px;
 	background-color: $primary-color;
@@ -805,11 +806,33 @@ nav{
 .hamburger-button::before{
 	@extend %layout__hamburger;
 	margin-bottom: 8px;
+	transition: $animation-delay;
 }
 
 .hamburger-button::after{
 	@extend %layout__hamburger;
 	margin-top: 8px;
+	transition: $animation-delay;
+}
+
+.hamburger-button_active{
+	width: 67px;
+	&::before{
+		position: relative;
+		top: 45%;
+		margin: 0;
+		@extend %layout__hamburger;
+		transform: rotate(45deg);
+	}
+	&::after{
+		position: relative;
+		top: -45%;
+		@extend %layout__hamburger;
+		transform: rotate(-45deg);
+	}
+	span{
+		display: none;
+	}
 }
 
 @media (max-width: 1200px) and (min-width: 979px){
@@ -864,6 +887,10 @@ nav{
 @media (min-width: 768px) and (max-width: 979px){
 	.wrapper{
 		max-width: 700px;
+	}
+
+	header{
+		padding: 10px 0px;
 	}
 
 	.main-page{
@@ -942,7 +969,7 @@ nav{
 		transition: $animation-delay;
 		transform: translate(100%, 0);
 		position: fixed;
-		top: 110px;
+		top: 85px;
 		width: 200px;
 		height: 90%;
 		right: 0;
@@ -1016,6 +1043,10 @@ nav{
 }
 
 @media (max-width: 767px){
+	header{
+		padding: 10px 0px;
+	}
+
 	.wrapper{
 		max-width: 700px;
 	}
@@ -1074,7 +1105,7 @@ nav{
 	.application__img{
 		margin: 0;
 		position: relative;
-		right: 145px;
+		right: 10%;
 		min-width: 100%;
 	}
 
@@ -1099,7 +1130,7 @@ nav{
 		transition: $animation-delay;
 		transform: translate(100%, 0);
 		position: fixed;
-		top: 110px;
+		top: 85px;
 		width: 200px;
 		height: 90%;
 		right: 0;
@@ -1153,7 +1184,9 @@ nav{
 
 	.achivements__text{
 		order: -1;
-		max-width: 100%;
+		max-width: 380px;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	.achivements__card{
@@ -1187,9 +1220,27 @@ nav{
 }
 
 @media (max-width: 480px){
+	.achivements__card{
+		max-width: 320px;
+	}
+
 	.achivements__container{
 		flex-direction: column;
 		align-items: center;
+	}
+
+	.news__card{
+		margin: 10px auto;
+		width: 100%;
+		img{
+			max-width: 100%;
+		}
+		h3{
+			font-size: 20px;
+		}
+		h3.text__h3{
+			margin-top: 4px;
+		}
 	}
 
 	.valuable-team__sort-buttons{
@@ -1201,12 +1252,19 @@ nav{
 		}
 	}
 
+	.application__img{
+		margin: 0;
+		position: relative;
+		right: 55%;
+		min-width: 100%;
+	}
+
 	.valuable-team__text{
 		width: 100%;
 	}
 
 	.achivements__card{
-		width: 90%;
+		width: 99%;
 		margin: 10px auto;
 	}
 
@@ -1233,6 +1291,7 @@ nav{
 		img{
 			margin-left: 40px;
 		}
+		padding: 40px;
 		justify-content: space-around;
 		text-align: center;
 	}

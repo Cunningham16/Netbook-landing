@@ -20,16 +20,18 @@ window.onscroll = () => {
 
 const burgerButton = document.querySelector(".hamburger-button")
 const burgerSidebar = document.querySelector("nav")
-const body = document.querySelector("body")
+const body = document.querySelector("html")
 let isOpenedSidebar = false;
 
 
 burgerButton.onclick = () => {
 	if(isOpenedSidebar === false){
 		isOpenedSidebar = true;
+		burgerButton.classList.add("hamburger-button_active")
 		burgerSidebar.style.transform = "translate(0, 0)"
 		body.style.overflowY = "hidden"
 	}else if(isOpenedSidebar === true){
+		burgerButton.classList.remove("hamburger-button_active")
 		isOpenedSidebar = false;
 		burgerSidebar.style.transform = "translate(100%, 0)"
 		body.style.overflowY = "auto"

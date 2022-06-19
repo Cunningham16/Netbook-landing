@@ -928,16 +928,16 @@ nav .primary-button {
 .hamburger-button {
   display: none !important;
   padding: 20px;
+  height: 65px;
   border: 1px solid #217BF4;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
 }
 .hamburger-button span {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   content: "";
   display: inline-block;
   width: 25px;
@@ -949,9 +949,11 @@ nav .primary-button {
   background-color: #217BF4;
 }
 
-.hamburger-button::after, .hamburger-button::before {
+.hamburger-button_active::after, .hamburger-button_active::before, .hamburger-button::after, .hamburger-button::before {
   content: "";
-  display: inline-block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   width: 25px;
   height: 2px;
   background-color: #217BF4;
@@ -959,10 +961,34 @@ nav .primary-button {
 
 .hamburger-button::before {
   margin-bottom: 8px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .hamburger-button::after {
   margin-top: 8px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.hamburger-button_active {
+  width: 67px;
+}
+.hamburger-button_active::before {
+  position: relative;
+  top: 45%;
+  margin: 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.hamburger-button_active::after {
+  position: relative;
+  top: -45%;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.hamburger-button_active span {
+  display: none;
 }
 
 @media (max-width: 1200px) and (min-width: 979px) {
@@ -1016,6 +1042,10 @@ nav .primary-button {
 @media (min-width: 768px) and (max-width: 979px) {
   .wrapper {
     max-width: 700px;
+  }
+
+  header {
+    padding: 10px 0px;
   }
 
   .main-page {
@@ -1107,7 +1137,7 @@ nav .primary-button {
     -webkit-transform: translate(100%, 0);
             transform: translate(100%, 0);
     position: fixed;
-    top: 110px;
+    top: 85px;
     width: 200px;
     height: 90%;
     right: 0;
@@ -1200,6 +1230,10 @@ nav .primary-button {
   }
 }
 @media (max-width: 767px) {
+  header {
+    padding: 10px 0px;
+  }
+
   .wrapper {
     max-width: 700px;
   }
@@ -1268,7 +1302,7 @@ nav .primary-button {
   .application__img {
     margin: 0;
     position: relative;
-    right: 145px;
+    right: 10%;
     min-width: 100%;
   }
 
@@ -1296,7 +1330,7 @@ nav .primary-button {
     -webkit-transform: translate(100%, 0);
             transform: translate(100%, 0);
     position: fixed;
-    top: 110px;
+    top: 85px;
     width: 200px;
     height: 90%;
     right: 0;
@@ -1368,7 +1402,9 @@ nav .primary-button {
     -webkit-box-ordinal-group: 0;
         -ms-flex-order: -1;
             order: -1;
-    max-width: 100%;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .achivements__card {
@@ -1421,6 +1457,10 @@ nav .primary-button {
   }
 }
 @media (max-width: 480px) {
+  .achivements__card {
+    max-width: 320px;
+  }
+
   .achivements__container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1429,6 +1469,20 @@ nav .primary-button {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+  }
+
+  .news__card {
+    margin: 10px auto;
+    width: 100%;
+  }
+  .news__card img {
+    max-width: 100%;
+  }
+  .news__card h3 {
+    font-size: 20px;
+  }
+  .news__card h3.text__h3 {
+    margin-top: 4px;
   }
 
   .valuable-team__sort-buttons {
@@ -1443,12 +1497,19 @@ nav .primary-button {
     margin-top: 15px;
   }
 
+  .application__img {
+    margin: 0;
+    position: relative;
+    right: 55%;
+    min-width: 100%;
+  }
+
   .valuable-team__text {
     width: 100%;
   }
 
   .achivements__card {
-    width: 90%;
+    width: 99%;
     margin: 10px auto;
   }
 
@@ -1483,6 +1544,7 @@ nav .primary-button {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    padding: 40px;
     -ms-flex-pack: distribute;
         justify-content: space-around;
     text-align: center;
